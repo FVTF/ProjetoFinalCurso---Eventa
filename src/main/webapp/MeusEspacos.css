@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+@import url("HomeFornecedor.css");
+
+/* Body: background and spacing for fixed header */
+body {
+  margin: 0;
+  padding-top: 8rem; /* espaço para header fixo */
+  background: url("images/ImagemServicosPag.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container principal com fundo sólido e sombra */
+.main-content {
+  position: relative;
+  max-width: 1100px;
+  margin: 4rem auto 4rem; /* afasta do header e do rodapé */
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  z-index: 900;
+}
+
+/* Título claro e legível */
+.main-content h1 {
+  font-size: 3.2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+/* Botão principal */
+.main-content .btn {
+  display: inline-block;
+  padding: .8rem 2.8rem;
+  border-radius: 5rem;
+  background: var(--main-color);
+  color: var(--white);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: background .3s;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.main-content .btn:hover {
+  background: var(--primary-color);
+}
+
+/* Tabela de espaços */
+.main-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.main-content th,
+.main-content td {
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-align: left;
+}
+.main-content th {
+  background: var(--main-color);
+  color: var(--white);
+  text-transform: uppercase;
+}
+.main-content td {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.main-content tr:nth-child(even) td {
+  background: #f9f9f9;
+}
+
+/* Ações: botões editar/apagar */
+.main-content td a,
+.main-content td button {
+  display: inline-block;
+  padding: .5rem 1.5rem;
+  border-radius: .5rem;
+  background: var(--main-color);
+  color: var(--white);
+  font-size: 1.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .3s;
+  border: none;
+  margin-right: .5rem;
+}
+.main-content td a:hover,
+.main-content td button:hover {
+  background: var(--primary-color);
+}
+
+/* Responsivo: tabela em bloco */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 2rem 1rem;
+  }
+  .main-content table,
+  .main-content thead,
+  .main-content tbody,
+  .main-content th,
+  .main-content td,
+  .main-content tr {
+    display: block;
+  }
+  .main-content thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .main-content tr {
+    margin-bottom: 1.5rem;
+  }
+  .main-content td {
+    position: relative;
+    padding-left: 50%;
+  }
+  .main-content td:before {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  .main-content td:nth-of-type(1):before { content: "Descrição"; }
+  .main-content td:nth-of-type(2):before { content: "Preço"; }
+  .main-content td:nth-of-type(3):before { content: "Morada"; }
+  .main-content td:nth-of-type(4):before { content: "Cód. Postal"; }
+  .main-content td:nth-of-type(5):before { content: "Ações"; }
+}

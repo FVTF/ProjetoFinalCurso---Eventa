@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+@import url("HomeFornecedor.css");
+
+/* Body */
+body {
+  margin: 0;
+  padding-top: 8rem; /* espaço para header fixo */
+  background: url("images/ImagemServicosPag.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container principal */
+.main-content {
+  position: relative;
+  max-width: 1100px;
+  margin: 4rem auto 4rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 4px 32px 0 #d3d3f3;
+  z-index: 900;
+}
+
+.main-content h1 {
+  font-size: 3.2rem;
+  color: #393a6f;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  color: #393a6f;
+  margin: 2.2rem 0 1rem 0;
+  font-weight: 500;
+}
+
+.main-content ul {
+  font-size: 1.25rem;
+  margin-bottom: 1.7rem;
+}
+
+.main-content ul li strong {
+  font-weight: 600;
+  color: #404068;
+}
+
+.main-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.main-content th,
+.main-content td {
+  padding: 1rem;
+  font-size: 1.15rem;
+  text-align: left;
+}
+
+.main-content th {
+  background: #ff6565;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+}
+
+.main-content td {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.main-content tr:nth-child(even) td {
+  background: #f9f9f9;
+}
+
+.estado-PENDENTE {
+  color: #ff9900;
+  font-weight: bold;
+}
+.estado-ACEITE, .estado-CONFIRMADA {
+  color: #31c45a;
+  font-weight: bold;
+}
+.estado-RECUSADA, .estado-CANCELADA {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.btn-acao {
+  display: inline-block;
+  padding: .45rem 1.2rem;
+  border-radius: 5rem;
+  background: #404068;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+  margin-right: .5rem;
+}
+.btn-aceitar {
+  background: #31c45a;
+}
+.btn-aceitar:hover {
+  background: #218838;
+}
+.btn-recusar {
+  background: #ff4343;
+}
+.btn-recusar:hover {
+  background: #cc2323;
+}
+
+/* HEADER E DROPDOWN (herda de HomeFornecedor.css) */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+#username {
+  font-weight: 600;
+  color: #393a6f;
+  margin-right: 0.8rem;
+  font-size: 1.25rem;
+}
+
+/* Dropdown do user */
+.user-info .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; right: 0;
+  background: #fff;
+  box-shadow: 0 2px 12px #e3e3e3;
+  border-radius: .5rem;
+  z-index: 1000;
+  min-width: 140px;
+}
+.user-info .dropdown-content a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #393a6f;
+  font-size: 1.15rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.user-info .dropdown-content a:hover {
+  background: #ff6565;
+  color: #fff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 2rem 1rem;
+  }
+  .main-content table,
+  .main-content thead,
+  .main-content tbody,
+  .main-content th,
+  .main-content td,
+  .main-content tr {
+    display: block;
+  }
+  .main-content thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .main-content tr {
+    margin-bottom: 1.5rem;
+  }
+  .main-content td {
+    position: relative;
+    padding-left: 50%;
+    border-bottom: none;
+    background: #fff !important;
+  }
+  .main-content td:before {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  .main-content td:nth-of-type(1):before { content: "Cliente"; }
+  .main-content td:nth-of-type(2):before { content: "Serviço"; }
+  .main-content td:nth-of-type(3):before { content: "Data"; }
+  .main-content td:nth-of-type(4):before { content: "Estado"; }
+  .main-content td:nth-of-type(5):before { content: "Ações"; }
+}

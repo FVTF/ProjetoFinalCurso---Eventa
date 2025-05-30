@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('images/gallery-5.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 30px;
+}
+
+/* Container principal: painel branco + sombra */
+.container {
+  width: 100%;
+  max-width: 600px; /* só o formulário */
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Remover o cover entirely */
+.container .cover {
+  display: none;
+}
+
+/* Formulário ocupa todo o container */
+.container .forms {
+  width: 100%;
+  padding: 40px 30px;
+  background: #fff;
+}
+
+.form-content {
+  display: block;
+}
+
+.signup-form {
+  width: 100%;
+}
+
+.forms .title {
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+.forms .title:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 3px;
+  width: 25px;
+  background: #f45866;
+}
+
+/* Campos */
+.input-boxes {
+  margin-top: 20px;
+}
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin: 12px 0;
+}
+
+/* linha inferior */
+.input-box input,
+.input-box select {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  outline: none;
+  transition: border-color 0.3s;
+  color: #333;
+}
+
+/* foco */
+.input-box input:focus,
+.input-box select:focus {
+  border-color: #f45866;
+}
+
+/* ícone dentro do campo */
+.input-box i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #f45866;
+  padding-left: 8px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* seta do select */
+.input-box select.custom-select {
+  appearance: none;
+}
+.input-box .custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.input-box .custom-select-wrapper::after {
+  content: '\f078';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f45866;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* Botão Registar (mesmo estilo) */
+.registar-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f45866;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+.registar-btn:hover {
+  background-color: #d94456;
+}
+
+.text.sign-up-text {
+  font-size: 14px;
+  color: #333;
+}
+.text.sign-up-text a {
+  color: #6c63ff; /* ou outra cor que prefira para o link */
+  text-decoration: none;
+  font-weight: 500;
+}
+.text.sign-up-text a:hover {
+  text-decoration: underline;
+}
+
+
+/* Responsivo: já não há cover */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

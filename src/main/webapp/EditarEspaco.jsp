@@ -1,0 +1,126 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.example.model.Utilizador, com.example.model.Fornecedor, com.example.dao.FornecedorDAO, com.example.model.Espaco, com.example.DatabaseConnection" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    // Verifica sessão de utilizador
+    Utilizador user = (Utilizador) session.getAttribute("utilizador");
+    if (user == null) {
+        response.sendRedirect("LoginServlet");
+        return;
+    }
+    // Verifica se é fornecedor
+    Fornecedor f = new FornecedorDAO(DatabaseConnection.getConnection())
+                     .findByUserId(user.getIdUser());
+    if (f == null) {
+        response.sendRedirect("HomeClienteServlet");
+        return;
+    }
+    // Obtém o espaço a editar
+    Espaco e = (Espaco) request.getAttribute("espaco");
+    String error = (String) request.getAttribute("error");
+%>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Espaço</title>
+    <!-- AOS, Swiper, FontAwesome e teu CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="EditarEspaco.css" />
+</head>
+<body>
+    <!-- Header idêntico ao HomeFornecedor -->
+    <header class="header">
+        <a href="HomeFornecedorServlet class="logo" data-aos="zoom-in-left" data-aos-delay="150">
+            <i class="fas fa-user"></i> Eventa
+        </a>
+        <nav class="navbar">
+            <a href="HomeFornecedorServlet" data-aos="zoom-in-left" data-aos-delay="300">Home</a>
+            <a href="EditarRamo" data-aos="zoom-in-left" data-aos-delay="450">Alterar Ramo</a>
+            <a href="ReservasFornecedorServlet" data-aos="zoom-in-left" data-aos-delay="600">Reservas</a>
+            <a href="DashboardFornecedorServlet" data-aos="zoom-in-left" data-aos-delay="900">Dashboard</a>
+            <a href="PerfilFornecedorServlet" data-aos="zoom-in-left" data-aos-delay="1050">Perfil</a>
+        </nav>
+        <div class="icons">
+            <div id="user-info" class="user-info" data-aos="zoom-in-left" data-aos-delay="1350">
+                <i class="fas fa-user"></i>
+                <span id="username"><%= user.getNome() %></span>
+                <div id="dropdown" class="dropdown-content">
+                    <a href="LogoutServlet">Logout</a>
+                </div>
+            </div>
+            <div id="menu" class="fas fa-bars" data-aos="zoom-in-left" data-aos-delay="1500"></div>
+        </div>
+    </header>
+
+    <div class="main-content" data-aos="fade-down">
+        <h1>Editar Espaço</h1>
+
+        <% if (error != null) { %>
+            <div class="alert error"><%= error %></div>
+        <% } %>
+
+        <form action="EditarEspacoServlet" method="post" class="form-espaco">
+            <input type="hidden" name="id_espaco" value="<%= e.getIdEspaco() %>" />
+
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao"
+                       value="<%= e.getDescricao() %>" required />
+            </div>
+
+            <div class="form-group">
+                <label for="preco">Preço (€)</label>
+                <input type="number" id="preco" name="preco" step="0.01" min="0"
+                       value="<%= e.getPreco() %>" required />
+            </div>
+
+            <div class="form-group">
+                <label for="morada">Morada</label>
+                <input type="text" id="morada" name="morada"
+                       value="<%= e.getMorada() %>" required />
+            </div>
+
+            <div class="form-group">
+                <label for="cod_postal">Código Postal</label>
+                <input type="text" id="cod_postal" name="cod_postal"
+                       value="<%= e.getCodPostal() != null ? e.getCodPostal() : "" %>" required />
+            </div>
+
+            <div class="form-group">
+                <label for="latitude">Latitude</label>
+                <input type="text" id="latitude" name="latitude"
+                       value="<%= e.getLatitude() %>" required />
+            </div>
+
+            <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input type="text" id="longitude" name="longitude"
+                       value="<%= e.getLongitude() %>" required />
+            </div>
+
+            <button type="submit" class="btn">Atualizar Espaço</button>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({ duration: 800, once: true });
+        document.getElementById('menu').addEventListener('click', () => {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+        document.getElementById('user-info').addEventListener('click', () => {
+            const dd = document.getElementById('dropdown');
+            dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+</body>
+</html>
