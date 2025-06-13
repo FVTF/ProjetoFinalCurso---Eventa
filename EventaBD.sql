@@ -14,33 +14,33 @@ CREATE TABLE Ramo (
     descricao VARCHAR(255)
 );
 
-/* Se ainda n„o existir, forÁa unicidade da descriÁ„o */
+/* Se ainda n√£o existir, for√ßa unicidade da descri√ß√£o */
 ALTER TABLE Ramo
 ADD CONSTRAINT UQ_Ramo_Descricao UNIQUE (descricao);
 
 
 INSERT INTO Ramo (descricao)
 VALUES
-  ('Catering / RestauraÁ„o'),
+  ('Catering / Restaura√ß√£o'),
   ('Pastelaria & Bolos'),
   ('Bar / Cocktails'),
-  ('DecoraÁ„o & Design Floral'),
-  ('Aluguer de Mobili·rio'),
+  ('Decora√ß√£o & Design Floral'),
+  ('Aluguer de Mobili√°rio'),
   ('Som, Luz & Palco'),
   ('Fotografia'),
   ('Videografia'),
-  ('M˙sica ao Vivo'),
-  ('DJ / AnimaÁ„o Musical'),
+  ('M√∫sica ao Vivo'),
+  ('DJ / Anima√ß√£o Musical'),
   ('Pirotecnia & Efeitos Especiais'),
   ('Convites & Papetaria'),
-  ('LembranÁas / Brindes'),
+  ('Lembran√ßas / Brindes'),
   ('Planeamento / Wedding Planner'),
-  ('Transporte & LogÌstica'),
-  ('Aluguer de VeÌculos Cl·ssicos'),
-  ('EspaÁos para Eventos'),
+  ('Transporte & Log√≠stica'),
+  ('Aluguer de Ve√≠culos Cl√°ssicos'),
+  ('Espa√ßos para Eventos'),
   ('Equipamento Audiovisual'),
-  ('ServiÁos de Limpeza'),
-  ('Staff / SeguranÁa'),
+  ('Servi√ßos de Limpeza'),
+  ('Staff / Seguran√ßa'),
   ('Tecnologias Interativas');
 
 CREATE TABLE Utilizador (
@@ -181,30 +181,30 @@ CREATE TABLE Pagamento_Cliente_Servico (
 
 -- Inserir todos os distritos de Portugal
 INSERT INTO Distrito (nome) VALUES 
-('Aveiro'), ('Beja'), ('Braga'), ('BraganÁa'), ('Castelo Branco'), ('Coimbra'), 
-('…vora'), ('Faro'), ('Guarda'), ('Leiria'), ('Lisboa'), ('Portalegre'), 
-('Porto'), ('SantarÈm'), ('Set˙bal'), ('Viana do Castelo'), ('Vila Real'), ('Viseu'), ('Madeira'), ('AÁores');
+('Aveiro'), ('Beja'), ('Braga'), ('Bragan√ßa'), ('Castelo Branco'), ('Coimbra'), 
+('√âvora'), ('Faro'), ('Guarda'), ('Leiria'), ('Lisboa'), ('Portalegre'), 
+('Porto'), ('Santar√©m'), ('Set√∫bal'), ('Viana do Castelo'), ('Vila Real'), ('Viseu'), ('Madeira'), ('A√ßores');
 
--- Inserir Localidades para os espaÁos
+-- Inserir Localidades para os espa√ßos
 INSERT INTO Localidade (cod_postal, nome, cod_distrito) VALUES
 ('4000-001', 'Porto Centro', 13),
 ('8000-002', 'Faro Marina', 8),
 ('1050-003', 'Lisboa Baixa', 11);
 
--- Inserir EspaÁos com localizaÁ„o
+-- Inserir Espa√ßos com localiza√ß√£o
 INSERT INTO Espaco (descricao, id_fornecedor, preco, morada, cod_postal) VALUES
-('Sal„o Porto', 1, 1200.00, 'Rua da Alegria, 100', '4000-001'),
-('Resort Faro', 1, 2000.00, 'Avenida MarÌtima, 50', '8000-002'),
-('Pal·cio Lisboa', 1, 3000.00, 'PraÁa do ComÈrcio, 1', '1050-003');
+('Sal√£o Porto', 1, 1200.00, 'Rua da Alegria, 100', '4000-001'),
+('Resort Faro', 1, 2000.00, 'Avenida Mar√≠tima, 50', '8000-002'),
+('Pal√°cio Lisboa', 1, 3000.00, 'Pra√ßa do Com√©rcio, 1', '1050-003');
 
 -- Adicionar 5 tipos de eventos
 INSERT INTO Evento (descricao) VALUES 
-('Casamento'), ('Anivers·rio'), ('ConferÍncia'), ('Festa Corporativa'), ('Batizado');
+('Casamento'), ('Anivers√°rio'), ('Confer√™ncia'), ('Festa Corporativa'), ('Batizado');
 
 
 ALTER TABLE Fornecedor
 DROP CONSTRAINT UQ__Forneced__08537BCF95C412AB;
-/*id_ ramo na tabela fornecedor j· n„o È UNIQUE*/
+/*id_ ramo na tabela fornecedor j√° n√£o √© UNIQUE*/
 
 
 SELECT id_cliente_servico, id_espaco, preco_espaco FROM Cliente_Servico ORDER BY id_cliente_servico DESC;
