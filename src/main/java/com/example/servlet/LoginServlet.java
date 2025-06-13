@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             // 1) Verifica credenciais
-            String sql = "SELECT id_user, nome, email FROM Utilizador WHERE email = ? AND pwd = ?";
+        	String sql = "SELECT id_user, nome, email FROM Utilizador WHERE email = ? AND pwd = HASHBYTES('SHA2_512', ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, email);
                 stmt.setString(2, password);

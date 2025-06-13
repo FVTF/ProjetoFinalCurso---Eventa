@@ -12,9 +12,8 @@ public class UtilizadorDAO {
 
     /** Insere e devolve o id gerado. */
     public int create(Utilizador u) throws SQLException {
-        String sql = "INSERT INTO Utilizador "
-            + "(nome, email, pwd, data_registo, ativo, telefone, morada, cod_postal) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    	String sql = "INSERT INTO Utilizador (nome, email, pwd, data_registo, ativo, telefone, morada, cod_postal) "
+    	           + "VALUES (?, ?, HASHBYTES('SHA2_512', ?), ?, ?, ?, ?, ?)";
         try (PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, u.getNome());
             st.setString(2, u.getEmail());
